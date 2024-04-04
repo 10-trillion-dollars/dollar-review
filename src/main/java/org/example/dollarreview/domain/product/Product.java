@@ -1,4 +1,4 @@
-package org.example.dollarreview.domain.product.entity;
+package org.example.dollarreview.domain.product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.dollarreview.domain.user.entity.User;
+import org.example.dollarreview.domain.user.User;
 import org.example.dollarreview.global.TimeStamped;
 
 

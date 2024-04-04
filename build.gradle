@@ -16,6 +16,10 @@ repositories {
 }
 
 dependencies {
+	implementation files("share-0.0.3.jar")
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
 	// JWT
 	compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
@@ -30,6 +34,12 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.0"
+	}
 }
 
 tasks.named('test') {

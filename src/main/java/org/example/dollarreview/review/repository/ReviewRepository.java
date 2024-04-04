@@ -9,6 +9,6 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     //별점 내림차순 정렬
     List<Review> findAllByOrderByScoreDesc();
     //삭제가 안된 상품만 찾기
-    List<Review> findByProduct_IdAndProduct_StateTrue(Long productId);
+    List<Review> findByProductId(Long productId);
     Long countByUserIdAndProductId(Long userId,Long productId);
 }

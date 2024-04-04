@@ -1,4 +1,4 @@
-package org.example.dollarreview.domain.user.entity;
+package org.example.dollarreview.domain.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package org.example.dollarreview.domain.user.entity;
+package org.example.dollarreview.domain.user;
 
 public enum UserRoleEnum {
     USER(Authority.USER),  // 사용자 권한

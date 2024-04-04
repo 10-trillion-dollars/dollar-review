@@ -17,7 +17,7 @@ import java.util.Base64;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 
-import org.example.dollarreview.domain.user.entity.UserRoleEnum;
+import org.example.dollarreview.domain.user.UserRoleEnum;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

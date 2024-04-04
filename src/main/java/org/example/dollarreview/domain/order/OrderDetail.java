@@ -1,4 +1,4 @@
-package org.example.dollarreview.domain.order.entity;
+package org.example.dollarreview.domain.order;
 
 
 import jakarta.persistence.Column;

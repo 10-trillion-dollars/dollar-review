@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import lombok.Getter;
 
-import org.example.dollarreview.domain.user.entity.User;
-import org.example.dollarreview.domain.user.entity.UserRoleEnum;
+import org.example.dollarreview.domain.user.User;
+import org.example.dollarreview.domain.user.UserRoleEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

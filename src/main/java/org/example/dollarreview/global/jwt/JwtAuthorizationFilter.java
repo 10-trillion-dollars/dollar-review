@@ -14,7 +14,7 @@ import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.example.dollarreview.domain.user.entity.UserRoleEnum;
+import org.example.dollarreview.domain.user.UserRoleEnum;
 import org.example.dollarreview.global.security.UserDetailsService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

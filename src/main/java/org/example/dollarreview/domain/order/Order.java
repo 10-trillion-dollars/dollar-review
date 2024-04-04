@@ -1,11 +1,10 @@
-package org.example.dollarreview.domain.order.entity;
+package org.example.dollarreview.domain.order;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.dollarreview.domain.user.entity.User;
+import org.example.dollarreview.domain.user.User;
 import org.example.dollarreview.global.TimeStamped;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
 
 
 @Getter
