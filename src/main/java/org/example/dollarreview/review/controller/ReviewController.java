@@ -2,10 +2,10 @@ package org.example.dollarreview.review.controller;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.example.dollarreview.global.security.UserDetailsImpl;
 import org.example.dollarreview.review.dto.ReviewRequest;
 import org.example.dollarreview.review.dto.ReviewResponse;
 import org.example.dollarreview.review.service.ReviewService;
+import org.example.share.config.global.security.UserDetailsImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;

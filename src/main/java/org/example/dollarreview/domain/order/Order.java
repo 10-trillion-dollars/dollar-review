@@ -3,7 +3,6 @@ package org.example.dollarreview.domain.order;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.dollarreview.domain.user.User;
 import org.example.dollarreview.global.TimeStamped;
 
 
@@ -20,23 +19,25 @@ public class Order extends TimeStamped {
     @Enumerated(value = EnumType.STRING)
     private OrderState state;
 
+    @Column
+    private Long userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    private User user;
+    @Column
+    private Long addressId;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "address_id", nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-//    private Address address;
-//
-//    public Order(User user,OrderState state,Address address){
-//        this.user = user;
-//        this.state = state;
-//        this.address = address;
-//    }
+    @Column
+    private String KakaoTid;
+    public Order(Long userId,OrderState state,Long addressId){
+        this.userId = userId;
+        this.state = state;
+        this.addressId = addressId;
+    }
 
-//    public void changeState(OrderState state){
-//        this.state = state;
-//    }
+    public void changeState(OrderState state){
+        this.state = state;
+    }
+    public void updateTid(String tid){
+        this.KakaoTid=tid;
+    }
 
 }
