@@ -1,5 +1,6 @@
 package org.example.dollarreview.review.controller;
 
+import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.example.dollarreview.review.dto.ReviewRequest;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -39,7 +42,6 @@ public class ReviewController {
         List<ReviewResponse> responseList = reviewService.getAllReviews(productId);
         return ResponseEntity.ok().body(responseList);
     }
-    //리뷰 삭제
     @DeleteMapping("/reviews/{reviewId}")
     public ResponseEntity<String> deleteReview(
         @PathVariable Long reviewId,
@@ -60,7 +62,14 @@ public class ReviewController {
         reviewService.updateReview(reviewId,reviewRequest,userDetails.getUser().getId(),productId);
         return ResponseEntity.ok().body("리뷰가 수정 되었습니다.");
     }
+    @GetMapping("reviews/{reviewId}/image")
+    public ResponseEntity<byte[]> getProductImage(@PathVariable Long reviewId) throws IOException {
+        return reviewService.getReviewImage(reviewId);
+    }
 
-
+    @PostMapping("reviews/{reviewId}/image")
+    public void uploadReviewImage(@PathVariable Long productId, @RequestParam("file") MultipartFile file) throws IOException {
+        reviewService.uploadReviewImage(productId,file);
+    }
 
 }

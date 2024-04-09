@@ -31,7 +31,7 @@ public class Product extends TimeStamped {
     @Column
     private Long stock;
     @Column
-    private String photo;
+    private String imageKey;
     @Column
     private boolean state;
     @Column
@@ -44,17 +44,9 @@ public class Product extends TimeStamped {
         this.price = price;
         this.description = description;
         this.stock = stock;
-        this.photo = photo;
         this.userId = userId;
         this.state = true;
     }
 
-    public void delete() {
-        this.state = false;
-    }
-
-    public void updateStockAfterOrder(Long quantity) {
-        this.stock = stock - quantity;
-    }
 }
 

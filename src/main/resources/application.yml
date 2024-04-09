@@ -16,6 +16,19 @@ spring:
         use_sql_comments: true
 jwt:
   key: ${jwt.secret.key}
-  
+aws:
+  access:
+    key: ${access.key.id}
+  secret:
+    key: ${aws.secret.key}
+
+product:
+  bucket:
+    name: ${product.bucket.name}
+
+review:
+  bucket:
+    name: ${review.bucket.name}
+
 server:
   port: 8085

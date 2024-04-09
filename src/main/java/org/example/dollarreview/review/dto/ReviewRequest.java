@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReviewRequest {
     private String content;
-    private String photo;
     private int score;
 }
