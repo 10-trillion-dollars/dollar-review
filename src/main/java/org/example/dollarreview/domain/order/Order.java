@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.dollarorder.global.TimeStamped;
+import org.example.dollarreview.global.TimeStamped;
 
 
 @Getter
