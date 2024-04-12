@@ -12,6 +12,8 @@ public interface OrderFeignClient {
 
     @GetMapping("/users/{userId}/products/{productId}")
     Long countByUserIdAndProductId(@PathVariable Long userId, @PathVariable Long productId);
+    @GetMapping("/order/users/{userId}/products/{productId}")
+    String checkOrderState(@PathVariable Long userId,@PathVariable Long productId);
 
     @GetMapping("/users/{userId}/products/{productId}/orders")
     List<OrderDetail> getOrderDetails(@PathVariable Long userId, @PathVariable Long productId);

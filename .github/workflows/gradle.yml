@@ -29,6 +29,10 @@ jobs:
           spring.datasource.username: ${{ secrets.RDS_USERNAME }}
           spring.datasource.password: ${{ secrets.RDS_PASSWORD }}
           jwt.key: ${{ secrets.JWT_KEY }}
+          aws.access.key: ${{ secrets.ACCESS_KEY_ID }}
+          aws.secret.key: ${{ secrets.AWS_SECRET_KEY }}
+          product.bucket.name: ${{ secrets.PRODUCT_BUCKET_NAME }}
+          review.bucket.name: ${{ secrets.REVIEW_BUCKET_NAME }}
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -50,3 +54,16 @@ jobs:
       - name: docker Hub push
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/review
         
+#CD
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            docker compose down
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/review
+            docker compose up --detach
