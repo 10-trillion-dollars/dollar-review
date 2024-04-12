@@ -22,10 +22,6 @@ aws:
   secret:
     key: ${aws.secret.key}
 
-product:
-  bucket:
-    name: ${product.bucket.name}
-
 review:
   bucket:
     name: ${review.bucket.name}
