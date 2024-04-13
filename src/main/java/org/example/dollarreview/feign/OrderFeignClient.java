@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "dollar-order", url = "http://localhost:8084/external")
 public interface OrderFeignClient {
@@ -19,5 +20,5 @@ public interface OrderFeignClient {
     List<OrderDetail> getOrderDetails(@PathVariable Long userId, @PathVariable Long productId);
 
     @PostMapping("/orders/orderDetail/reviewState")
-    void saveOrderDetailReviewedState(OrderDetail orderDetail);
+    void saveOrderDetailReviewedState(@RequestBody OrderDetail orderDetail);
 }

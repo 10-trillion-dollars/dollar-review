@@ -12,11 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "order_detail")
 public class OrderDetail {
@@ -40,21 +43,8 @@ public class OrderDetail {
     @Column(nullable = false)
     private boolean reviewed = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    private Order order;
-
-    public OrderDetail(Order order, Long productId, Long quantity, Long price, String productName) {
-        this.productId = productId;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.order = order;
-        this.price = price;
-    }
-
-    public void setReviewed(boolean reviewed) {
-        this.reviewed = reviewed;
-    }
+    @Column
+    private Long orderId;
 
 
 }

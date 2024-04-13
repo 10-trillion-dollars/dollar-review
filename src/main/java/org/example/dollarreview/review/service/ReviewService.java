@@ -47,6 +47,7 @@ public class ReviewService {
     String bucketName;
 
     //리뷰 생성
+    @Transactional
     public void createReview(
         Long productId,
         ReviewRequest reviewRequest,
@@ -71,6 +72,7 @@ public class ReviewService {
 
         Review review = new Review(reviewRequest, productId, userId);
         orderService.saveOrderDetailReviewedState(orderDetail);
+        // orderDetail.setReviewed(true);
         reviewRepository.save(review);
     }
 
