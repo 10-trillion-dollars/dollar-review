@@ -41,13 +41,4 @@ public class Order extends TimeStamped {
         this.state = state;
         this.addressId = addressId;
     }
-
-    public void changeState(OrderState state) {
-        this.state = state;
-    }
-
-    public void updateTid(String tid) {
-        this.KakaoTid = tid;
-    }
-
 }
