@@ -7,6 +7,7 @@ import org.example.dollarreview.review.dto.ReviewRequest;
 import org.example.dollarreview.review.dto.ReviewResponse;
 import org.example.dollarreview.review.service.ReviewService;
 import org.example.share.config.global.security.UserDetailsImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class ReviewController {
         @AuthenticationPrincipal UserDetailsImpl userDetails
     ) {
         reviewService.createReview(productId, reviewRequest, userDetails.getUser().getId());
-        return ResponseEntity.ok().body("후기가 등록 되었습니다.");
+        return ResponseEntity.status(HttpStatus.CREATED).body("후기가 등록되었습니다.");
     }
     @GetMapping("/reviews")
     //리뷰 전체 조회
