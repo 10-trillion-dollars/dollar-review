@@ -28,3 +28,6 @@ review:
 
 server:
   port: 8085
+
+elk:
+  server: ${elk.server}
