@@ -67,5 +67,5 @@ jobs:
           script: |
             sudo docker stop $(sudo docker ps -q --filter ancestor=jw059/review)
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/review
-            sudo docker run --platform linux/amd64 -d -e elk.server=${{ secrets.ELK.SERVER }} -p 8085:8085 ${{ secrets.DOCKERHUB_USERNAME }}/review
+            sudo docker run --platform linux/amd64 -d -e elk.server=localhost:5000 -p 8085:8085 ${{ secrets.DOCKERHUB_USERNAME }}/review
             sudo docker image prune -f
