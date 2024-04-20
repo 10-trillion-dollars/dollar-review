@@ -33,7 +33,7 @@ jobs:
           aws.secret.key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           product.bucket.name: ${{ secrets.PRODUCT_BUCKET_NAME }}
           review.bucket.name: ${{ secrets.REVIEW_BUCKET_NAME }}
-          elk.server: ${{ secrets.ELK_SERVER }}
+          # elk.server: ${{ secrets.ELK_SERVER }}
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -67,5 +67,5 @@ jobs:
           script: |
             sudo docker stop $(sudo docker ps -q --filter ancestor=jw059/review)
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/review
-            sudo docker run --platform linux/amd64 -d -p 8085:8085 ${{ secrets.DOCKERHUB_USERNAME }}/review
+            sudo docker run --platform linux/amd64 -d -e elk.server= ${{ secrets.ELK.SERVER }} -p 8085:8085 ${{ secrets.DOCKERHUB_USERNAME }}/review
             sudo docker image prune -f
