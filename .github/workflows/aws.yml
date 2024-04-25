@@ -34,6 +34,8 @@ jobs:
           product.bucket.name: ${{ secrets.PRODUCT_BUCKET_NAME }}
           review.bucket.name: ${{ secrets.REVIEW_BUCKET_NAME }}
           elk.server: ${{ secrets.ELK_SERVER }}
+          loadbalancer.product: ${{ secrets.LOADBALANCER_PRODUCT }}
+          loadbalancer.order: ${{ secrets.LOADBALANCER_ORDER }}
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
