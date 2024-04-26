@@ -29,10 +29,13 @@ jobs:
           spring.datasource.username: ${{ secrets.RDS_USERNAME }}
           spring.datasource.password: ${{ secrets.RDS_PASSWORD }}
           jwt.key: ${{ secrets.JWT_KEY }}
-          aws.access.key: ${{ secrets.ACCESS_KEY_ID }}
-          aws.secret.key: ${{ secrets.AWS_SECRET_KEY }}
+          aws.access.key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws.secret.key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           product.bucket.name: ${{ secrets.PRODUCT_BUCKET_NAME }}
           review.bucket.name: ${{ secrets.REVIEW_BUCKET_NAME }}
+          elk.server: ${{ secrets.ELK_SERVER }}
+          loadbalancer.product: ${{ secrets.LOADBALANCER_PRODUCT }}
+          loadbalancer.order: ${{ secrets.LOADBALANCER_ORDER }}
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -41,7 +44,7 @@ jobs:
 
         # Docker 이미지 빌드
       - name: docker image build
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/review .
+        run: docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/review .
 
       # DockerHub 로그인
       - name: docker login
@@ -53,8 +56,8 @@ jobs:
       # Docker Hub 이미지 푸시
       - name: docker Hub push
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/review
-        
-#CD
+
+      #CD
 
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
@@ -64,6 +67,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            docker compose down
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/review
-            docker compose up --detach
+            sudo docker stop $(sudo docker ps -q --filter ancestor=jw059/review)
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/review
+            sudo docker run --platform linux/amd64 -d -e destination=${{ secrets.DESTINATION }} -p 8085:8085 ${{ secrets.DOCKERHUB_USERNAME }}/review
+            sudo docker image prune -f

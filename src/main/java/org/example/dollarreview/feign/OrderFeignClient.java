@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "dollar-order", url = "https://order.10-trillon-dollars.com/external")
+@FeignClient(name = "dollar-order", url = "${loadbalancer.order}/external")
 //@FeignClient(name = "dollar-order", url = "http://localhost:8084/external")
 public interface OrderFeignClient {
 

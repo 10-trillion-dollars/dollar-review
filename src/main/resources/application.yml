@@ -29,5 +29,6 @@ review:
 server:
   port: 8085
 
-elk:
-  server: ${elk.server}
+loadbalancer:
+  product: ${load.product}
+  order: ${load.order}
