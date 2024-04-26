@@ -28,3 +28,7 @@ review:
 
 server:
   port: 8085
+
+loadbalancer:
+  product: ${load.product}
+  order: ${load.order}
